@@ -25,7 +25,7 @@
                         <sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
                         <wsdlOptions>
                             <wsdlOption>
-                                <wsdl>http://localhost:8080/ws/test?wsdl</wsdl>
+                                <wsdl>http://localhost:8080/ws/MyKitty?wsdl</wsdl>
                             </wsdlOption>
                         </wsdlOptions>
                     </configuration>

@@ -144,3 +144,10 @@ Content-Length: ...
 ```
 
 HATEOAS позволяет реализовать слабую связь, мы можем подменить какие-то методы без изменений клиента.  
+
+#### SOAP Service in Java
+
+@WebMethod
+
+@WebResult 
+
