@@ -48,12 +48,14 @@ public class LibraryController {
 
     @GetMapping("/")
     public ResponseEntity<Library> getLib(){
+        lib.refresh();
         postNote("Получить всю библиотеку");
         return ResponseEntity.ok(lib);
     }
 
     @GetMapping(value = "/Books")
     public ResponseEntity<List<Book>> getBooks(@RequestParam(name = "search", required = false) String search){
+        lib.refresh();
         if (search != null){
             postNote("Найти книгу: " + search);
             List<Book> book = this.lib.bookList.stream().filter(
@@ -68,6 +70,7 @@ public class LibraryController {
 
     @GetMapping(value = "/Authors")
     public ResponseEntity<List<Author>> getAuthors(@RequestParam(name = "search", required = false) String search){
+        lib.refresh();
         if (search != null){
             postNote("Получить автора: " + search);
             List<Author> authors = this.lib.writers.stream().filter(
@@ -84,6 +87,7 @@ public class LibraryController {
 
     @GetMapping("/Authors/{lastname}")
     public ResponseEntity<?> getAntology(@PathVariable String lastname){
+        lib.refresh();
         Optional<Author> author = this.lib.writers.stream().filter(
                 b -> b.getName().toLowerCase().contains(lastname.toLowerCase())
         ).findFirst();
@@ -95,6 +99,7 @@ public class LibraryController {
 
     @GetMapping("/Books/{name}")
     public ResponseEntity<Book> getBookByName(@PathVariable String name){
+        lib.refresh();
         Optional<Book> optionalBook = this.lib.bookList.stream().filter(
                 (Book b) -> b.getCaption().equalsIgnoreCase(name)
         ).findFirst();
